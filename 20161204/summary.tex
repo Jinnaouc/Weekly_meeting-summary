@@ -1,0 +1,245 @@
+\documentclass{article}
+\usepackage{CTEX}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper]{geometry}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+\linespread{1.5}
+\usepackage{fancyhdr}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode,xltxtra}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK} \usepackage{CJKfntef}
+\usepackage{bm} 
+\usepackage{pifont}
+\usepackage{color,xcolor}
+\definecolor{GREEN}{RGB}{25,180,68}
+\definecolor{YELLOW}{RGB}{255,255,224}
+\definecolor{BLUE}{RGB}{65,105,225}
+\definecolor{RED}{RGB}{139,0,0}
+\definecolor{DRED}{RGB}{128,0,0}
+\definecolor{GREY}{RGB}{128,128,128}
+
+\usepackage{amsmath,amsfonts,amssymb}
+
+\usepackage[americaninductors,europeanresistors]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,shadows,shapes,calc,mindmap,trees,backgrounds}
+\usepackage{graphicx}
+\usepackage{subfigure} 
+\usepackage{colortbl,dcolumn}  
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+\usepackage{mdwlist}
+\usepackage{verbatim}
+\usepackage{/Users/jinna/styles/zhfontcfg}
+\usepackage{/Users/jinna/styles/visionouclistings}
+\usepackage{/Users/jinna/styles/visionouccfg}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+\setCJKmainfont{Adobe Kaiti Std} 
+\setCJKmonofont{Adobe Fangsong Std}
+\makeatletter
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+\color{BLUE}
+\hrule\@height 2.5pt \@width\headwidth\vskip1pt 
+\hrule\@height 0.5pt\@width\headwidth              
+\vskip-2\headrulewidth\vskip-1pt}        
+\vspace{6mm}}                
+\makeatother         
+
+\graphicspath{{figures/}}
+\tikzset{
+    >=stealth',
+    punkt/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,},
+    FlyZhyBall/.style={
+      circle,
+      minimum size=6mm,
+      inner sep=0.5pt,
+      ball color=red!50!blue,
+      text=white,},
+    FlyZhyRectangle/.style={
+      rectangle,
+      rounded corners,
+      minimum size=6mm,
+      ball color=red!50!blue,
+      text=white,},
+    zhyfly/.style={
+      rectangle,
+      rounded corners,
+      minimum size=6mm,
+      ball color=red!25!blue,
+      text=white,},
+    nrectangle/.style={
+      rectangle,
+      draw=#1!50,
+      fill=#1!20,
+      minimum size=5mm,
+      inner sep=0.1pt,}
+}
+
+% code
+\lstnewenvironment{VHDLcode}[1][]{%
+  \lstset{
+    basicstyle=\footnotesize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLmiddle}[1][]{%
+  \lstset{
+    basicstyle=\scriptsize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLsmall}[1][]{%
+  \lstset{
+    basicstyle=\tiny\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+% pdf
+\hypersetup{pdfauthor={Haiyong Zheng},%
+            pdftitle={Title},%
+            CJKbookmarks=true,%
+            bookmarksnumbered=true,%
+            bookmarksopen=false,%
+            plainpages=false,%
+            colorlinks=true,%
+            citecolor=green,%
+            filecolor=magenta,%
+            linkcolor=DRED,%red(default)
+            urlcolor=cyan}
+\newcommand\titlebar{%
+\tikz[baseline,trim left=3.1cm,trim right=3cm] {
+    \fill [cyan!25] (2.5cm,-1ex) rectangle (\textwidth+3.1cm,2.5ex);
+    \node [
+        fill=cyan!60!white,
+        anchor= base east,
+        rounded rectangle,
+        minimum height=3.5ex] at (3cm,0) {
+        \textbf{\thesection.}
+    };
+}%
+}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{
+ backgroundcolor=\color{white}, 
+ basicstyle = \footnotesize,       
+ breakatwhitespace = false,        
+ breaklines = true,                 
+ captionpos = b,                    
+ commentstyle = \color{mygreen}\bfseries,
+ extendedchars = false,             
+ frame =shadowbox, 
+ framerule=0.5pt,
+ keepspaces=true,
+ keywordstyle=\color{blue}\bfseries, % keyword style
+ language = C++,                     % the language of code
+ otherkeywords={string}, 
+ numbers=left, 
+ numbersep=5pt,
+ numberstyle=\tiny\color{mygray},
+ rulecolor=\color{black},         
+ showspaces=false,  
+ showstringspaces=false, 
+ showtabs=false,    
+ stepnumber=1,         
+ stringstyle=\color{mymauve},        % string literal style
+ tabsize=2,          
+ title=\lstname                      
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%设置标题页面               
+\chead{\color{GREY}meeting name}%页眉
+\cfoot{\color{GREY}time}%页脚 中
+\lfoot{\color{GREY}Jinna}%页脚 左
+\rfoot{\color{GREY}\thepage\ }%页脚 右
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{/Users/jinna/styles/lshort}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagenumbering{roman}
+
+
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\textbf{\LARGE{Weekly Summary}} %标题加黑加大居
+\end{center}
+
+\begin{center}
+Jinna Cui
+\end{center}
+
+\begin{center}
+11.28 - 12.04
+\end{center}
+\section{Summary}
+This week, almost all of my time is used to write my paper. Besides, I also did some experiments, including 103 classes on 3-channel AlexNet and Cifar10 net.  I also trained original images, lowpass filtering images and highpass filtering images on single-channel AlexNet. 
+
+\section{Plan}
+Next week, I mainly plan to do these things:
+
+1. Summarize the Caffe operation steps and learn more about caffe by doing experiments. By doing some experiments last two week, I have known something about caffe, but there is still some details.
+
+2. Learning English. This week, I realized the importance of English, because I really don't know how to write an article, it's a big challenge for me. My paper is lack of professionalism. So, reading more paper and excerpt good sentences and expressions will help, I want to learn from others by reading their papers and  imitate firstly. Besides, practicing writing is essential, from now on, I will always write in English, I also hope our respected teachers can point out my mistakes in English directly. 
+
+3. I also plan to read more paper about classification by CNNs, and learn more basic knowledge about image processing according to professor.Lee's suggestion about our plankton classification. 
+
+4. More experiments are essential, I also want to try other methods to extract global features and local features. 
+
+\end{document}
